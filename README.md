@@ -8,7 +8,11 @@ Garage Hub's **car spare-parts catalogue** displays representative images, part 
 
 - Six common car spare parts with real representative Wikimedia Commons photos
 - Estimated price ranges in INR (not live quotes, no installation costs)
-- Category filters, search, sort, responsive product cards, image attribution
+- Automatically generated, stable GH-category-part SKUs (catalogue reference IDs, not OEM part numbers)
+- Accessible − 1 + quantity selectors (range 1–99) that retain values across search and sorting
+- Add/remove parts in an in-memory estimate list with quantity-based INR price ranges
+- Category filters, SKU/name search, sort, responsive product cards, image attribution
+- Client-side safe DOM construction, restrictive CSP, no third-party scripts, no checkout or sensitive-data collection
 - Works as a static website without dependencies
 
 ## Run
@@ -24,6 +28,11 @@ Prices are illustrative ranges for general aftermarket/service replacement parts
 - `index.html`: Accessible markup and page structure
 - `styles.css`: Responsive style and animations
 - `parts-data.js`: Parts, estimates, photo credits
-- `app.js`: Catalogue filtering, searching and sorting
+- `catalogue-utils.js`: Deterministic SKUs, validated quantities and pricing helpers
+- `app.js`: Catalogue browsing, quantity controls and estimate list
 
 Photos are credited to their individual Wikimedia Commons authors in the page's image credits section. They are examples of spare-part types, not guaranteed compatible products or seller listings.
+
+## Security and scope
+
+This is a static example catalogue. Item quantities and estimates are calculated only in the browser and are **not** a purchase, supplier quotation, payment, order, or stock reservation. No user account, server-side authorization, transaction processing, database, or persistent inventory exists here. The site uses a restrictive Content Security Policy (CSP), safe text-node DOM updates, no third-party JavaScript, and bounded arithmetic. For an eventual real garage-management backend, enforce SKU uniqueness, prices, quantities, inventory, access control and payment totals again on the server.

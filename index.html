@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#101b27">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://commons.wikimedia.org https://upload.wikimedia.org https://thumb.wikimedia.org; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
   <meta name="description" content="Explore six common car spare parts with photos and estimated prices in Indian rupees.">
   <title>Spare Parts Catalogue | Garage Hub</title>
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./parts-data.js"></script>
+  <script defer src="./catalogue-utils.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -20,6 +23,7 @@
       </a>
       <nav class="top-nav" aria-label="Main navigation">
         <a href="#catalogue" class="nav-active">Spare parts</a>
+        <a href="#estimatePanel" class="estimate-nav">Estimate <span id="estimateNavCount">0</span></a>
         <a href="#about">About prices</a>
       </nav>
       <button id="printButton" type="button" class="header-button"><span aria-hidden="true">↗</span> Print catalogue</button>
@@ -53,7 +57,7 @@
           <label class="search-field" for="partSearch">
             <span class="search-symbol" aria-hidden="true">⌕</span>
             <span class="visually-hidden">Search spare parts</span>
-            <input id="partSearch" type="search" placeholder="Search by part name or category..." autocomplete="off">
+            <input id="partSearch" type="search" placeholder="Search by name, category or SKU..." autocomplete="off">
           </label>
           <label class="sort-field" for="sortBy">
             <span>Sort by</span>
@@ -77,6 +81,22 @@
           <p>Try another part name or choose a different category.</p>
           <button id="clearFilters" type="button">Reset filters</button>
         </div>
+
+        <section class="estimate-panel" id="estimatePanel" aria-labelledby="estimateHeading">
+          <div class="estimate-panel-head">
+            <div><span class="section-kicker">YOUR SELECTED PARTS</span>
+              <h3 id="estimateHeading">Parts estimate<span class="heading-period">.</span></h3>
+              <p>Choose quantities from 1 to 99. Estimates only, not a checkout or stock reservation.</p>
+            </div>
+            <button id="clearEstimate" type="button" class="estimate-clear" disabled>Clear all</button>
+          </div>
+          <div id="estimateItems" class="estimate-items"></div>
+          <div class="estimate-total-row">
+            <div><span id="estimateCount">0 items</span><small>Approximate parts-only total</small></div>
+            <strong id="estimateTotal">₹0</strong>
+          </div>
+        </section>
+        <div id="selectionStatus" class="visually-hidden" role="status" aria-live="polite"></div>
       </div>
     </section>
 
@@ -84,7 +104,7 @@
       <div class="info-icon" aria-hidden="true">i</div>
       <div>
         <h2 id="infoTitle">A note about the prices</h2>
-        <p>All prices shown are <strong>approximate parts-only ranges in INR</strong>, not live quotations or confirmed offers. Prices vary by vehicle, manufacturer, quality and retailer. Labour, delivery and taxes (if applicable) may change the total. Check your exact make, model, year, engine and compatible OEM number before buying. The photos are representative, not exact products for sale.</p>
+        <p>All prices shown are <strong>approximate parts-only ranges in INR</strong>, not live quotations or confirmed offers. Prices vary by vehicle, manufacturer, quality and retailer. Labour, delivery and taxes (if applicable) may change the total. Check your exact make, model, year, engine and compatible OEM number before buying. The photos are representative, not exact products for sale. Generated GH- SKUs identify catalogue entries only, not manufacturer/OEM part numbers. Quantities and estimate totals are calculated in your browser; no payment or order is processed.</p>
       </div>
     </section>
   </main>
