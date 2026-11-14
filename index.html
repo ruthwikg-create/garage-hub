@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101b27">
+  <meta name="description" content="Explore six common car spare parts with photos and estimated prices in Indian rupees.">
+  <title>Spare Parts Catalogue | Garage Hub</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./parts-data.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalogue">Skip to spare parts</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./index.html" aria-label="Garage Hub home">
+        <span class="brand-mark" aria-hidden="true">GH<span class="brand-dot">.</span></span>
+        <span class="brand-name">GARAGE<span>HUB</span></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#catalogue" class="nav-active">Spare parts</a>
+        <a href="#about">About prices</a>
+      </nav>
+      <button id="printButton" type="button" class="header-button"><span aria-hidden="true">↗</span> Print catalogue</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" aria-labelledby="pageTitle">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR GARAGE, SIMPLIFIED</div>
+        <h1 id="pageTitle">Every part.<br><em>One place.</em></h1>
+        <p>Explore the essentials for your next service. Find spare-part names, reference photographs and estimated prices in Indian rupees.</p>
+        <a class="hero-link" href="#catalogue">Explore spare parts <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="hero-gear">✦</div>
+        <div class="hero-art-label">SPARE PARTS / 001</div>
+        <div class="hero-art-number">06<span> essentials</span></div>
+      </div>
+    </section>
+
+    <section class="catalogue-section" id="catalogue" aria-labelledby="catalogueTitle">
+      <div class="shell">
+        <div class="section-heading">
+          <div><span class="section-kicker">PARTS DIRECTORY</span><h2 id="catalogueTitle">Browse the catalogue<span class="heading-period">.</span></h2></div>
+          <p>Common maintenance parts, clear price ranges and no guesswork about what is included.</p>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-field" for="partSearch">
+            <span class="search-symbol" aria-hidden="true">⌕</span>
+            <span class="visually-hidden">Search spare parts</span>
+            <input id="partSearch" type="search" placeholder="Search by part name or category..." autocomplete="off">
+          </label>
+          <label class="sort-field" for="sortBy">
+            <span>Sort by</span>
+            <select id="sortBy">
+              <option value="featured">Featured</option>
+              <option value="priceLow">Lowest starting price</option>
+              <option value="priceHigh">Highest starting price</option>
+              <option value="name">Name (A–Z)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="filter-row">
+          <div id="categoryFilters" class="filter-options" role="group" aria-label="Filter by category"></div>
+          <span id="resultCount" class="result-count" role="status" aria-live="polite"></span>
+        </div>
+
+        <div id="partsGrid" class="parts-grid" aria-live="off"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <div aria-hidden="true">⌕</div><h3>No matching parts</h3>
+          <p>Try another part name or choose a different category.</p>
+          <button id="clearFilters" type="button">Reset filters</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section shell" id="about" aria-labelledby="infoTitle">
+      <div class="info-icon" aria-hidden="true">i</div>
+      <div>
+        <h2 id="infoTitle">A note about the prices</h2>
+        <p>All prices shown are <strong>approximate parts-only ranges in INR</strong>, not live quotations or confirmed offers. Prices vary by vehicle, manufacturer, quality and retailer. Labour, delivery and taxes (if applicable) may change the total. Check your exact make, model, year, engine and compatible OEM number before buying. The photos are representative, not exact products for sale.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div><span class="footer-brand">GARAGE HUB<span>.</span></span><p>Practical parts information for smarter car care.</p></div>
+      <details class="image-credits"><summary>Image credits & licences</summary><ul id="imageCredits"></ul></details>
+      <span class="footer-copy">Illustrative catalogue • India (₹)</span>
+    </div>
+  </footer>
+</body>
+</html>
